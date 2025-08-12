@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 function App() {
 
@@ -11,14 +13,26 @@ function App() {
     .then((json) => setStudents(json))
   }, []);
 
+  // Add student
+  const addStudent = (student) => {
+    setStudents([...students, { ...student, id: students.length + 1 }]);
+  };
+
+  //Update student
+  const updateStudent = (updated) => {
+    setStudents(
+      students.map((student) => (student.id === updated.id ? updated : student ))
+    );
+  };
+
+  //Delete student
+  const deleteStudent = (id) => {
+    setStudents(students.filter((student) => student.id !== id));
+  };
+
   return (
     <>
-      <div className="container mt-5">
-        <h2 class="mb-4 text-white text-center">Student Management System</h2>
-        <a href="#" class="btn btn-success mb-3">
-          + Add Student
-        </a>
-      </div>
+      
     </>
   );
 }
