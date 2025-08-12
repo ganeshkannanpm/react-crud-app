@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
+
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => response.json() )
+    .then((json) => setStudents(json))
+  }, []);
+
   return (
     <>
       <div className="container mt-5">
@@ -15,19 +24,22 @@ function App() {
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Update</th>
-              <th>Delete</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>01</td>
-              <td>John</td>
-              <td>john@gmail.com</td>
-              <td>9876543210</td>
-              <td><button className="btn btn-warning">Update</button></td>
-              <td><button className="btn btn-danger">Delete</button></td>
+            {students.map(user =>
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.phone}</td>
+              <td>
+                <button className="btn btn-warning ms-5">Update</button>
+                <button className="btn btn-danger ms-5">Delete</button>
+              </td>
             </tr>
+            )}
           </tbody>
         </table>
       </div>
