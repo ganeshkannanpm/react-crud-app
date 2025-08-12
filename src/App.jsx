@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <div className="container mt-5">
-        <h2 class="mb-4 text-center">Student Management System</h2>
+        <h2 class="mb-4 text-white text-center">Student Management System</h2>
         <a href="add.php" class="btn btn-success mb-3">
           + Add Student
         </a>
