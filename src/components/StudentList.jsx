@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 const StudentList = ({ students, onDelete }) => {
   return (
-    <div>
+    <div className='container mt-5'>
         <table class="table table-bordered table-striped mt-3">
-          <thead class="table-primary">
+          <thead class="table-dark">
             <tr>
               <th>ID</th>
               <th>Name</th>

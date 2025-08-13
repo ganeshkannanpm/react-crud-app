@@ -28,7 +28,8 @@ const StudentForm = ({ students = [], onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-3">
+    <form onSubmit={handleSubmit} className="container mt-3">
+        <h2 className="text-center">Add Student</h2>
       <div className="mb-3">
         <label>Name</label>
         <input
@@ -65,7 +66,7 @@ const StudentForm = ({ students = [], onSubmit }) => {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-primary mt-3">
         {id ? "Update" : "Add"} Student
       </button>
     </form>
