@@ -14,8 +14,10 @@ const StudentForm = ({ students = [], onSubmit }) => {
   const [formData, setFormData] = useState(existingStudent);
 
   useEffect(() => {
-    setFormData(existingStudent);
-  }, [existingStudent]);
+    if (id) {
+      setFormData(existingStudent);
+    }
+  }, [id, existingStudent]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,7 +31,7 @@ const StudentForm = ({ students = [], onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="container mt-3">
-        <h2 className="text-center">Add Student</h2>
+      <h2 className="text-center">Add Student</h2>
       <div className="mb-3">
         <label>Name</label>
         <input
@@ -58,7 +60,7 @@ const StudentForm = ({ students = [], onSubmit }) => {
         <label>Phone</label>
         <input
           type="text"
-          name="text"
+          name="phone"
           className="form-control"
           value={formData.phone}
           onChange={handleChange}
